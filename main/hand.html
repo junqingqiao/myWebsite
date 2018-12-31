@@ -1,0 +1,342 @@
+<!DOCTYPE HTML>
+<!--
+	Junqing's Website
+-->
+<html>
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131124171-1"></script>
+		<script>
+  			window.dataLayer = window.dataLayer || [];
+  			function gtag(){dataLayer.push(arguments);}
+  			gtag('js', new Date());
+
+  			gtag('config', 'UA-131124171-1');
+		</script>
+		<title>AI Prosthetic Hand</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="./index.html">Junqing Qiao's Portfolio</a></div>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="hand.html">AI Prosthetic Hand</a></li>
+					<li><a href="fluid_bci.html">Fluid BCI</a></li>
+					<li><a href="wheelchair.html">Habit Learning Wheelchair</a></li>
+					<li><a href="laser.html">Laser Eavesdrop</a></li>
+					<li><a href="robot.html">Robot Boxing</a></li>
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<p>AI Powered Intutive Prosthetic Hand</p>
+						<h2>Hand</h2>
+					</header>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content">
+							<header class="align-center">
+								<h2>Introduction</h2>
+							</header>
+							<p style="text-align: center">
+							<img width="90%" style="max-width:600px;" src="./images/hand/handCES.jpg" />
+							</p>
+							<h3>Background</h3>
+							<p>
+								It is a three-years-old project in <a href="https://www.brainrobotics.com">BrainRobotics Company</a>.
+								The goal of the project is to develop a bionic prosthetic hand which can be control like a real hand.
+							</p>
+							<p>
+								I am the <b>leader of the engineer team</b> as well as <b>the algorthm and embedded system developer</b>. I developed the custom neural network powered <a href="#three">Intuitive Control Algorithm</a>, the <a href="#four">Linux Kernel Module</a> and the <a href="#five">Embedded System</a>. 
+								I also involved in the developemnt of the GUI, the circuit and the machenical design. <br/>
+								This work won the <a href="https://www.ces.tech/Events-Programs/Innovation-Awards/Honorees.aspx"><b>CES 2019 Innovation Awards</b></a> under Accessibility category.<br/>
+								The following videos show normal people and amputee testing the prosthetic hand. 
+							</p>
+
+							<h3>Intutive Contorl Algorithm Tested by Normal People</h3>
+							<div class="video-responsive">
+							<iframe
+							src="https://www.youtube.com/embed/2vJ3qqQ4Rvs"
+							frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+							</iframe>
+							</div>
+							
+							<h3>Prosthetic Hand Tested by Amputee Ni</h3>
+							
+							<div class="video-responsive">
+							<iframe
+							src="https://www.youtube.com/embed/do-w5dfYuSw"
+							frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+							</iframe>
+							</div>
+							<p>
+								By the way, I'm the person behind the camera.
+							</p>
+
+							<h3>Anlu, Amputed Girl, Play Piano with Word Famous Pianist Langlang</h3>
+
+							<div class="video-responsive">
+							<iframe
+								src="https://www.youtube.com/embed/0ZQuprI4_e4?start=3568" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+							</iframe>
+							</div>
+
+							<h3>Pictures of The Prosthetic Hand</h3>
+							<img width="300px" src="./images/hand/image5.png" />
+							<img width="300px" src="./images/hand/image6.png"/>
+							<img width="300px" src="./images/hand/image1.png"/>
+							<img width="300px" src="./images/hand/amputee1.png"/>
+							<img width="300px" src="./images/hand/image7.jpg"/>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Three -->
+			<section id="three" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content">
+							<header class="align-center">
+								<p>Nerual Network Designed Based on The Structure of Forearm</p>
+								<h2>Bionic Deep Learning</h2>
+							</header>
+
+							<h2>Regression Algorithm for Intuitive Control</h2>
+							
+							<p>
+								As shown in the video above, the hand can be controlled intuitively by amputees in the same way they used to control the hand before amputation.
+								Amputees can move each invidual finger, do any hand gesture and even apply different force from different finger.
+							</p>
+
+							<img width="90%" max-width="1000px" src="./images/hand/newNN.png"/>
+							<p>
+								The diagram of the algorithm is shown above. 
+								However, since the algorithm is BrainRobotics' property, I can't show more detail here.
+								For professors who I'm applying to work with, the description of this algorithm can be found in my statement of objective.
+							</p>
+							<p>
+
+							</p>
+
+							<h2>Muscle Memory</h2>
+
+							<p>
+								Because of the missing of the connection between flexor tendons and extensor tendons</b>, amputees can't feel the position of fingers on the prosthetic hand.
+								Amputees have to use the visual feedback to control the location of each finger.
+								It means that amputees have to look at the hand all the time while they move fingers.
+								Inspried by the muscle memory, I'm developing an algorithm to solve the problem partially.
+								The algorithm can assist amputee moving the hand by learning the amputee's habit. 
+								
+
+							</p>
+
+							<p>
+								Since the algorithm is BrainRobotics' property, I can't expose more detail. 
+								However, the mechanism behind the algorithm is similar to the algorithm I developed in the <a href="./wheelchair.html">Habit Learning Wheelchair</a> project.
+								You can get more information there.
+							</p>
+
+							<h2>Past Algorithms</h2>
+							<p>
+								The following two sketch block diagrams are demonstrating the algorithms I have developed before for the prosthetic hand.
+								
+							</p>
+							
+							<h3>Triditional Machine Learning Approach</h3>
+							<p>
+								I developed the first one in 2016 following the approach from established academic papers. 
+								The algorithm can classify 13 gestures with 80% accuracy.
+							</p>
+
+							<img width="90%" max-width="1000px" src="./images/hand/ml1.png" />
+
+							<h3>Deep Neural Network Classification</h3>
+							<p>
+								The second one is developed in 2017. I repaced the feature extraction part with convolutional neural network and the SVM part with fully connected neural network.
+								There is a huge improvement in accuracy. However, it's still classification instead of the intuitive control.
+							</p>
+	
+							<img width="90%" max-width="1000px" src="./images/hand/ml2.png" />
+
+							
+							<p></p>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Four -->
+			<section id="four" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content">
+							<header class="align-center">
+								<p>Get EMG Data from ADS1299 in Read-Time</p>
+								<h2>Linux Kernel Module</h2>
+							</header>
+							
+							<h3>Why Linux?</h3>
+							<p>
+								Comparing to bare metal or RTOS, Linux system requires more hardware resource.
+								However, Linux system can provide the following benefits none of the other solution can provide.
+							</p>
+							<ul>
+								<li>Well supported libraries</li>
+								<ul>
+									<li>Tensorflow</li>
+									<li>Pytorch</li>
+									<li>...</li>
+								</ul>
+
+								<li>Well supported device drivers</li>
+								<ul>
+									<li>Wifi</li>
+									<li>Bluetooth</li>
+									<li>USB</li>
+									<li>...</li>
+								</ul>
+								<li>Well designed file system</li>
+								<li>Robust task schedualing</li>
+							</ul>
+
+							<h3>Why Linux Kernel?</h3>
+							<p>
+								Developing a linux kernel module is not a easy task. 
+								However, developing device driver in kernel space can provide a lot of benefits.
+							</p>
+
+							<ul>
+								<li>Interrupts Supported</li>
+								<ul>
+									<li>
+										Fast response: The sample rate of ADS1299 is up to 16k Hz.
+										Data packet have to be read in a short time period.
+										Using interrupt can make sure no packet losting.
+									</li>
+									<li>
+										Low CPU usage: Because of interrupt, system don't need to keep inquire the Data Ready (DRDY) pin.
+									</li>
+								</ul>
+
+								<li>Direct Memory Access (DMA)</li>
+								<ul>
+									<li>
+										Low CPU usage: Reading data from SPI can be handled by DMA automatically instead of CPU.
+										
+									</li>
+								</ul>
+								<li>Virtual file system</li>
+								<ul>
+									<li>
+										The ADS1299 device can be configured by writing configuration data in to a file in the user space.
+										Data from ADS1299 can also be collected by reading a file in the user space.
+									</li>
+								</ul>
+							</ul>
+
+							<h3>Kernel Module Implementation</h3>
+
+							
+							<img width="90%" style="max-width:1000px" src="./images/hand/iio.png" />
+							<p>
+								The image above shows the structure of the Kernel Module.
+								I used IIO subsystem of Linux as the freamwork.
+								I'm negotiating with BrainRobotics now to publish my Linux Kernel Module to read data from ADS1299 to Linux Kernel Tree to make it open source.
+								Before that, I can't show the source code here.
+							</p>
+
+							<h3>Device Tree</h3>
+							<p>
+								Only having the Linux Kernel Module is not enough.
+								To let the Linux system know under which port to find the device, Device Tree have to be developed.
+								The following image shows how the Device Tree is loaded. 
+							</p>
+							
+							<img width="90%" style="max-width:600px" src="./images/hand/deviceTree.png" />
+
+							<h3>Device Tree Code Example Registering ADS1299's SPI Port</h3>
+							<img width="90%" style="max-width:600px" src="./images/hand/Dtcode.png" />
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Five -->
+			<section id="five" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content">
+							<header class="align-center">
+								<p>RTOS, PID, Encoder, Current Feedback</p>
+								<h2>Embedded System</h2>
+							</header>
+
+							<p>
+								The whole embedded system running on the prosthetic hand was also developed by me.
+							</p>
+
+							<H2>System Architecture</H2>
+							
+							<img  width="90%" style="max-width:600px" src="images/hand/embedded.png"/>
+
+							<H2>STM CUBE</H2>
+							<p>
+								The chip I used was under STM32F4 family. 
+								So I used the STM CUBE code generator to generate libraries for the circuit board.
+								The chip I/O configuration and clock configuration are shown below.
+							</p>
+
+							<img  width="90%" style="max-width:600px" src="images/hand/cube1.png"/>
+							<img  width="90%" style="max-width:600px" src="images/hand/cube2.png"/>
+							
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Untitled. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

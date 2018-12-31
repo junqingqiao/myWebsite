@@ -1,0 +1,255 @@
+<!DOCTYPE HTML>
+<!--
+	Junqing's Website
+-->
+<html>
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131124171-1"></script>
+		<script>
+  			window.dataLayer = window.dataLayer || [];
+  			function gtag(){dataLayer.push(arguments);}
+  			gtag('js', new Date());
+
+  			gtag('config', 'UA-131124171-1');
+		</script>
+		<title>FLUID BCI</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="./index.html">Junqing Qiao's Portfolio</a></div>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="hand.html">AI Prosthetic Hand</a></li>
+					<li><a href="fluid_bci.html">Fluid BCI</a></li>
+					<li><a href="wheelchair.html">Habit Learning Wheelchair</a></li>
+					<li><a href="laser.html">Laser Eavesdrop</a></li>
+					<li><a href="robot.html">Robot Boxing</a></li>
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<p>EEG EMG EOG development board for Fluid Interface</p>
+						<h2>Fluid BCI</h2>
+					</header>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="Two" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content">
+							<header class="align-center">
+								<h2>Introduction</h2>
+							</header>
+							<h2>The Board</h2>
+							<img width="90%" style="max-width:1000px" src="./images/fluid_bci/board.jpg" />
+							
+							<p>
+								It is a 3-months project in <a href="https://www.media.mit.edu/groups/fluid-interfaces/overview/">Fluid Interface Research Group in MIT Media Lab</a>.
+								Guillermo a PhD student in Fluid Interface and I developed the development board to collect EEG, EMG, ECG and EOG signal for the research group.
+							</p>
+
+							<p>
+								The development board use ADS1299 as ADC.
+								One board can collect eight channels bioelectricity signal at 16k sample per second with 24 bit resolution.
+								Several boards can be connected together so more than eight channels is also supported.
+							</p>
+
+							<p>
+								I write the Linux kernel Module and Arduino driver for the board making the board compatible both with Linux machine and Arduino.
+								I also designed part of the schematic of the circuit.
+							</p>
+
+							<h2>Signal Quality</h2>
+							<h3>EMG</h3>
+
+							<img width="90%" style="max-width:1000px" src="./images/fluid_bci/EMG.png" />
+
+							<img width="90%" style="max-width:1000px" src="./images/fluid_bci/motor_unit.png" />
+							<p>
+								Single motor units can be seen in the system.
+							</p>
+
+							<h3>ECG</h3>
+
+							<img width="90%" style="max-width:1000px" src="./images/fluid_bci/ECG.png" />
+
+							<h3>EOG</h3>
+							<div class="video-responsive">
+							<iframe
+							src="//www.youtube.com/embed/Zaq11kFS9oc?start=10" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+							</iframe>
+							</div>
+
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Three -->
+			<section id="three" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content">
+							<header class="align-center">
+								<p>Interfaces and Right Leg Drive</p>
+								<h2>Circuit Design</h2>
+								
+							</header>
+							<h3>Right Leg Drive</h3>
+							<p>
+								I designed the Driven Right Leg circuit on the board to get ride of common-mode noise.
+							</p>
+							<p>
+								A Driven Right Leg Circuit or DRL circuit is an electric circuit that is often added to biological signal amplifiers to reduce Common-mode interference. 
+								Biological signal amplifiers such as ECG (Electrocardiogram) EEG (Electroencephalogram) or EMG circuits measure very small electrical signals emitted by the body, often as small as several micro-volts (millionths of a volt). 
+								Unfortunately, the patient's body can also act as an antenna which picks up electromagnetic interference, especially 50/60 Hz noise from electrical power lines. 
+								This interference can obscure the biological signals, making them very hard to measure. 
+								Right Leg Driver circuitry is used to eliminate interference noise by actively cancelling the interference.(from WIKIPEDIA)
+							</p>
+
+							<img width="90%" style="max-width:1000px" src="./images/fluid_bci/rld.png" />
+													
+							<p>
+								Shown in the image above, the mechanism bechind Driven Right Leg Circuit is similar to how an active noise cancelling headphone works.
+								The circuit collect all common-mode noise, then invert the signal, push it back to human body.
+								As result, the noise is canceled.
+							</p>
+
+							<h3>Interfaces</h3>
+
+							<img width="90%" style="max-width:1000px" src="./images/fluid_bci/interface.png" />
+							<p>
+								The development board is compatibility with various of setups.
+							</p>
+								MCU Options
+								<ul>
+									<li>Raspberry Pi Family</li>
+									<li>Beaglebone Family</li>
+									<li>Arduino Feather Family</li>
+									<li>Any machine running Linux with SPI port</li>
+								</ul>
+								Electrode Options
+								<ul>
+									<li>Wet electrodes</li>
+									<li>Active dry eletrodes</li>
+									<li><a href="https://www.media.mit.edu/projects/physiohmd/overview/">PhysioHMD</a></li>
+								</ul>
+							<p>
+								It also has I2C port which can connect IMU, temperature sensor and so on.
+								The ADS1299 also can be replaced by ADS129X and ADS119X family.
+							</p>
+								
+							
+						
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Four -->
+			<section id="four" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content">
+							<header class="align-center">
+								<p>Arduino and Linux Kernel Module</p>
+								<h2>Software Design</h2>
+							</header>
+							
+							<h2>Arduino</h2>
+							<p>
+								There are three modules in the Arduino code as shown in the following image.
+								The three modules are <b>ADS1299 Configuration</b> module, <b>ADS1299 Data Receiver</b> module, <b>Wifi Transmitter</b>  module and a <b>Ring Buffer</b>.
+								<br/>
+								<br/>
+								When the board start, the <b>ADS1299 Configuration</b> module writes to the registors in the ADS1299 chip through SPI port to configure the sample rate, data resolution and multiplexers.
+								<br/>
+								<br/>
+								The <b>ADS1299 Data Receiver</b> module response to the interrupt generated by the ADS1299 Data Ready(DRDY) pin.
+								When interrupt happens, this module will read data from ADS1299 through SPI port and wirte the data to the <b>Ring Buffer</b>.
+								<br/>
+								<br/>
+								The <b>Wifi Transmitter</b> read data from the <b>Ring Buffer</b> and tramsmit the data to the receiver.
+								<br/>
+								<br/>
+								The <b>Ring Buffer</b> plays a very important role since the wireless communication can't be always stable.
+								Without the <b>Ring Buffer</b> memory overflow may happen.
+
+							</p>							
+
+
+							<img width="90%" style="max-width:1000px" src="./images/fluid_bci/arduino.png" />
+
+							<p>You can download the Ardunio code by clicking the link below.<br/>
+							<a href="./download/ads1299wifi_interrupt_upd_leadoff.zip">Arduino Project Download</a>
+							</p>
+							<h2>Linux Kernel</h2>
+							<p>
+								The Linux Kernel Module(LKM) is similar to the LKM in the <a href="./hand.html#four">AI Prosthetic Hand</a> project.
+								You can find detailed information about the LKM there.
+							</p>
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Five -->
+			<section id="five" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content">
+							<header class="align-center">
+								<p>More and More</p>
+								<h2>Projects Using the Board</h2>
+							</header>
+
+							<p>TODO</p>
+
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Junqing Qiao. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

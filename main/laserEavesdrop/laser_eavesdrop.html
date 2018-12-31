@@ -1,0 +1,199 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<table width="100%" cellpadding="10" cellspacing="0">
+<tbody>
+<tr>
+<td width="100" valign="top"><a href="http://en.ustc.edu.cn/">
+    <img border="0" src="images/ustc.jpeg" width="100" height="100"></a>
+
+</td>
+
+<td width="797" valign="top">
+  <h1>Laser Eavesdrop</h1>
+  <p>Project Leader: Junqing Qiao (me)</p>
+  <p>members:Chuanxu Wan, Yang Chen, TianXing Fang</p></td>
+</tr>
+</tbody>
+</table>
+<table width="100%" border="0" align="center">
+<tr>
+  <td height="78" colspan="2" align="center" valign="middle"><div id="3Dmodel"><img src="images/laser_eavesdrop.jpg" width="1022" height="480"></div>    <p>&nbsp;</p></td>
+  </tr>
+<tr>
+  <td width="600">&nbsp;</td>
+  <td width="459" rowspan="3" align="left" valign="top"><p>
+    The 3D model is the simplified light path of the laser-eavesdrop device. You can put your mouse on the image and move your mouse to change the view point.(To view this model, WebGL should be supported by your browser. Browsers such as Google Chrome is OK.)</p>
+    <p>The picture below is the 2D light path.</p>
+    <p><img src="model/lightPath.jpg" alt="" width="593" height="574"></p>
+	<hr>
+	<audio src="laserEavesdrop.mp3" controls="controls"></audio>
+    <p>This audio is a sample audio produced by our device.</p>
+    <p><img src="model/wave.jpg" width="600" height="247">The picture posted up shows the contrast between frequency spectrum graphics of sounds gained form sound source, old way of laser-eavesdrop(inflection) and our new laser-eavesdrop method (interference).</p>
+    <p>Sound gained by our device is much closer to the sound source than the old method.</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p><strong>How does our new type laser-eavesdrop device work?</strong></p>
+    <p>Sound is a kind of vibration that can transmat through almost all the subjects around us such as air, water, glass and so on. So a sound source must influence subjects around it. The vibration on subjects around the sound can somewhat reflect the vibration, in another word, sound on the surface of the sound source.</p>
+    <p>We devide the laser ray into two rays. One of the two rays is shooted to a subject near the sound source. Then we use another laser ray interfere with the reflect light. The optical path difference between the two rays is changing because of the vibration. The vibration is coded in the interfere pattern. So sound can be detected  by capturing and decoding changing interfere pattern. </p>
+    <p>It really works well!</p>
+    <p>&nbsp;</p>
+    <p><strong>What I got from this project?</strong></p>
+    <p>Compared with another project (<a href="../robot/robot.html">robot</a>) that I participate as a team leader two years ago, the leader job I did is quite well this time.</p></td>
+</tr>
+<tr>
+  <td valign="top"><video width="600" src="photos/speech.mp4" controls="controls"></video>
+  <br>
+  <em>It is the video that I give speech to professors and students from universities such as Beijing University, Tsinghua University, National Taiwan University to show my device to them. </em></td>
+  </tr>
+<tr>
+  <td><p><img src="photos/_MG_0906.JPG" width="600" height="400"></p>
+    <p><img src="photos/laser_eavesdrop.JPG" alt="" width="600" height="400"></p>
+    <p><img src="photos/IMG_1057.jpg" width="600" height="400" alt="YanZhao"></p>
+    <p><img src="photos/IMG_1056.JPG" width="600" height="400"></p>
+    <p><img src="photos/IMG_0808.JPG" width="600" height="400"></p>
+    <p><img src="photos/IMG_1052.png" width="600" height="400"></p>
+    <p><img src="photos/IMG_0861.JPG" width="600" height="400"></p>
+    <p><img src="photos/_MG_0820.JPG" width="600" height="400"></p>
+    <p><img src="photos/IMG_0882.JPG" width="600" height="400"></p>
+    <p><img src="photos/_MG_0824.JPG" width="600" height="400"></p>
+    <p><img src="photos/IMG_0795.JPG" width="600" height="400"></p>
+    <p><img src="photos/IMG_1145.JPG" width="600" height="400"></p></td>
+  </tr>
+<tr>
+  <td height="227">&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+</table>
+<script src="js/three.min.js" type="text/javascript"></script>
+    <script>
+		var container, camera, renderer, scene, mouseOut = false, mouseX = 0, mouseY = 0, mouseZ = 300, mouseX0 = 0, mouseY0 = 0, mouseZ0 = 300;
+		var model,group, mesh;
+		var plane;
+		var R = 1, angleX = 1.5, angleY = 3 ;
+		var sceneHeight = 480, sceneWidth = 1024;
+		
+		init();
+		function init()
+		{
+			container = document.getElementById('3Dmodel');
+			
+			camera = new THREE.PerspectiveCamera(50, sceneWidth/sceneHeight, 0.01, 100);
+			scene = new THREE.Scene();
+			group = new THREE.Object3D();
+			scene.add(camera);
+			
+			renderer = new THREE.WebGLRenderer({preserveDrawingBuffer :true, antialias : true});
+			renderer.setSize(sceneWidth,sceneHeight);
+			renderer.shadowMapEnabled   = true;
+			renderer.sortObjects = false;
+			renderer.shadowMapSoft = true;
+			renderer.shadowMapCascade = true;
+			renderer.setClearColorHex( 0x000000, 1);
+			initLight();
+		}
+		
+		container.addEventListener( 'mousemove', onMouseMove,false );
+		container.addEventListener( 'mouseout' ,onMouseOut,false);
+		container.addEventListener( 'mouseover', onMouseOver, false);
+		setInterval(update, 1000/30);
+		
+		function onMouseMove( event )
+		{
+			if(event.shiftKey == 1)
+			{
+				mouseZ += event.clientX + event.clientY - mouseX - mouseY;
+			}
+			mouseX = event.offsetX;
+			mouseY = event.offsetY;
+		}
+		
+		function onMouseOut( event )
+		{
+			mouseOut = true;
+		}
+		
+		function onMouseOver( event )
+		{
+			mouseOut = false;
+		}
+			
+		var light, light2, light3, light4;  
+
+		function initLight() 
+		{   
+	
+			light = new THREE.SpotLight(0xFFFFFF,3,10);   
+			light.castShadow        = true;
+			light.position.set( 500, 500 , 500 );  
+			light.target.position.set(0,0,0);
+			light.shadowMapHeight = 2048;
+			light.shadowMapWidth = 2048;
+			light.shadowCameraNear  = 0.01;
+			light.shadowCameraFar   = 10;
+			light.shadowCameraFov = 120 ;
+			light.shadowDarkness        = 0.55;
+			//light.shadowCameraVisible   = true;
+			light.shadowBias = 0.000000000000000000005;
+			scene.add(light);  
+			
+			light2 = new THREE.AmbientLight(0x606060);
+			scene.add(light2);
+			
+			
+			light3 = new THREE.PointLight(0xffffff,1,10000);
+			light3.position.set(-2,1,0);
+			scene.add(light3);
+			
+		}  
+		
+		var loader = new THREE.JSONLoader();
+		var material = new THREE.MeshFaceMaterial();
+		loader.load( 'model/laser_eavesdrop.js', 
+			function ( geometry ) 
+			{ 
+				geometry.computeTangents(); 
+				mesh = new THREE.Mesh( geometry , new THREE.MeshFaceMaterial() );  
+				mesh.position.x = -0.3;  
+				mesh.position.y = 0;
+				mesh.position.z = 0;
+				mesh.rotation.x = mesh.rotation.y = mesh.rotation.z = 0;  
+				mesh.scale.x = mesh.scale.y = mesh.scale.z = 0.0001; 
+				mesh.matrixAutoUpdate = false;  
+				mesh.updateMatrix();
+				mesh.castShadow = true;
+				mesh.receiveShadow = true;    
+				group.add(mesh);
+				scene.add(mesh);
+				container.innerHTML = "";
+				container.appendChild(renderer.domElement);
+			} ); 
+		
+		function update()
+		{
+			angleX = mouseX/sceneWidth*Math.PI/1.5+0.5;
+			angleY = -mouseY/sceneHeight*Math.PI/3+1.1;
+			R = 1.2;
+			camera.position.x = R*Math.cos(angleY)*Math.sin(angleX);
+			camera.position.y = R*Math.sin(angleY)
+			camera.position.z = R*Math.cos(angleY)*Math.cos(angleX);
+			camera.lookAt(new THREE.Vector3(-camera.position.x,-camera.position.y,-camera.position.z));
+			
+			light.position.x = camera.position.x*1.2+0.2;
+			light.position.z = camera.position.z*1.2+0.2;
+			light.position.y = camera.position.y*1.2+0.2;
+			
+			if(mouseOut == false)
+			{
+				renderer.render(scene,camera);
+			}
+		}
+		
+	</script>
+</body>
+</html>

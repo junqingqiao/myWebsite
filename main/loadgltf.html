@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Load GLTF Test</title>
+    <meta name="viewport" content="width=device-width, 
+    user-scalable=no, minimum-scale=1.0, maximum-scale=1.0,
+    initial-scale=1">
+    <style>
+		body {
+			font-family: Monospace;
+			background-color: #666;
+			color: #fff;
+			margin: 0px;
+			overflow: hidden;
+		}
+		#info {
+			color: #fff;
+			position: absolute;
+			top: 10px;
+			width: 100%;
+			text-align: center;
+			z-index: 100;
+			display:block;
+		}
+		#info a {
+			color: #75ddc1;
+			font-weight: bold;
+		}
+	</style>
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+</head>
+<body>
+    <div id="info">
+		<a href = "http://www.junqingqiao.com" target="_blank">junqingqiao</a> - GLTFLoader <br />
+
+	</div>
+	<script src="../includes/three.js"></script>
+	<script src="../includes/js/controls/OrbitControls.js"></script>
+	<script	src="../includes/js/loaders/GLTFLoader.js"></script>
+	<script src="../includes/js/WebGL.js"></script>
+	<script src="../includes/js/libs/stats.min.js"></script>
+
+	<script>
+		//var THREE = require('three')
+		if ( WEBGL.isWebGLAvailable() == false) {
+			document.body.append(WEBLG.getWebGLErrorMessate());
+		}
+	</script>
+	<script src="loadfltf.js"></script>
+    
+</body>
+</html>

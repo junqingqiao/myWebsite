@@ -1,0 +1,215 @@
+<!DOCTYPE HTML>
+<!--
+	Junqing's Website
+-->
+<html>
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131124171-1"></script>
+		<script>
+  			window.dataLayer = window.dataLayer || [];
+  			function gtag(){dataLayer.push(arguments);}
+  			gtag('js', new Date());
+
+  			gtag('config', 'UA-131124171-1');
+		</script>
+		<title>DESTINATION PREDICTION WHEELCHAIR</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="subpage">
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="./index.html">Junqing Qiao's Portfolio</a></div>
+				<a href="#menu">Menu</a>
+			</header>
+
+		<!-- Nav -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="hand.html">AI Prosthetic Hand</a></li>
+					<li><a href="fluid_bci.html">Fluid BCI</a></li>
+					<li><a href="wheelchair.html">Habit Learning Wheelchair</a></li>
+					<li><a href="laser.html">Laser Eavesdrop</a></li>
+					<li><a href="robot.html">Robot Boxing</a></li>
+				</ul>
+			</nav>
+
+		<!-- One -->
+			<section id="One" class="wrapper style3">
+				<div class="inner">
+					<header class="align-center">
+						<p>Unsupervised Habit Learning and Destination Perdicting Algorithm</p>
+						<h2>WHEELCHAIR</h2>
+					</header>
+				</div>
+			</section>
+
+		<!-- Two -->
+			<section id="Two" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content">
+							<header class="align-center">
+								<h2>Introduction</h2>
+							</header>
+
+							<p>
+								I developed a user habit learning and activity perdicting algorithm using clustering and Baysian Network for my Master's Thesis in WPI at 2015 adviced by Professor Taskin Padir.
+								The algorithm can predict the destination the user want to visit based on the user's past activity such as the time when the user entered the building, when the user visited the office and the time of the day.
+							</p>
+
+							<p>
+								This algorithm can assist people like stephen hawking who can only do very low bandwidth communication to machines.
+								We can find optimal coding scheme based on the Information Theory when we have the probability of each options.
+								In my experiment, the destinations was ranked based on the algorithm's output.
+								Selecting destiantion with higer rank requires the user doing less activity than the selecting destinations with lower rank.
+							</p>
+
+							<p>
+								The algorithm ran on the wheelchair platform shown below built by Dmitry Sinyukov who was a PhD student in WPI.
+							</p>
+
+							<img width="90%" style="max-width:600px" src="./images/wheelchair/wheelchair.png" />
+							
+							<p>
+								Simultaneous localization and mapping(SLAM) algorithm from <a href="http://www.ros.org/">Robotic Operation System(ROS)</a> was used to calculate the realtime location of the wheelchair based on the readings from LIDAR.
+								Then I used Density-based spatial clustering of applications with noise (DBSCAN) algorithm to find several locations the user visited frequently from the user location history.
+								Having all the locations, Baysian Network was trained from the time series data of when the user visited each location.
+								Then, the user's future location can be perdicted by the Baysian Network based on the past location the user have visited.
+							</p>
+							
+							<h3>Algorithm Flow Chart</h3>
+							<img width="90%" style="max-width:1000px" src="./images/wheelchair/blockDiagram.png" />
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Three -->
+			<section id="three" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content">
+							<header class="align-center">
+								<p>Find important Locations from User's History Location Data </p>
+								<h2>Clustering for Locations</h2>
+							</header>
+	
+							<p>
+								The prupose of the algorithm is to find the locations the user usually visit.
+								SLAM algorithm generated the map of the whole floor based on the data from LIDAR.
+								At the same time, the wheelchair's location was also calculated.
+								I recorded the wheelchair's location every minute.
+							</p>
+
+                            <img width="90%" style="max-width:600px" src="./images/wheelchair/map.png" />
+							<img width="90%" style="max-width:600px" src="./images/wheelchair/image1.png" />
+
+							<p>
+								To get the locations where the user usually visited, several Unsupervised Clustering algorithms was tried on user's location history including: K-means clustering, Hierarchical clustering, Gaussian Mixture Model(GMM) and Density-based spatial clustering of applications with noise (DBSCAN).
+								Following images show the reuslt of different clustering algorithms.
+								Points with different color belongs to different cluster.
+							</p>
+							
+								
+							
+							<img width="90%" style="max-width:600px" src="./images/wheelchair/Kmeans.png" />
+							<img width="90%" style="max-width:600px" src="./images/wheelchair/Hierarchical.png" />
+							<img width="90%" style="max-width:600px" src="./images/wheelchair/GMM8.png" />
+							<img width="90%" style="max-width:600px" src="./images/wheelchair/GMM19.png" />
+							<img width="90%" style="max-width:600px" src="./images/wheelchair/dbscan.png" />
+							
+							<p>
+								Finally, I used the combination GMM and DBSCAN as the clustering algorithm in the final application.
+								DBSCAN groups together location points that are closely packed together (points with many nearby neighbors), marking as outliers points that lie alone in low-density regions (whose nearest neighbors are too far away). 
+								Then I fitted multiple guassian functions to the density destribution of each cluster as shown in the following image.
+							</p>
+
+							<h3>Algorithm Result</h3>
+							
+							
+                            <img width="90%" style="max-width:600px" src="./images/wheelchair/map.png" />
+							<img width="90%" style="max-width:600px" src="./images/wheelchair/clusterMap.png" />
+							<p>
+								The first image above is the places the user usually visit.
+								The second image is the result of Density-based clustering algorithm.
+								Different color means different clusters. 
+								The ellipses in the second image are the shape of gaussian functions fitted to the density destribution of location points in each cluster.
+							</p>
+
+							
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+		<!-- Four -->
+			<section id="four" class="wrapper style2">
+				<div class="inner">
+					<div class="box">
+						<div class="content">
+							<header class="align-center">
+								<p>Find the Relationship between Locations</p>
+								<h2>Bayesian Network</h2>
+							</header>
+							<p>
+								After getting all the important locations. 
+								The Baysian Network can be trained based on the time when the user visit and leave each impotant location.
+								The learned Baysian Network looks the image below.
+								T1, T2, T3 and T4 are how long ago does the user visited the location 1, 2, 3 and 4.
+								ToD is the time of the day.
+								The Baysian Network learned from the history data can used those information to predict the probabilities of the user visiting each location.
+							</p>
+
+							<img width="90%" style="max-width:600px" src="./images/wheelchair/bayesianNet.png" />
+							
+							<h3>Block Diagram of How to Train the Bayesian Network</h3>
+							<img width="90%" style="max-width:600px" src="./images/wheelchair/bic.png" />
+							
+							<h3>Fun Results</h3>
+							<p>The units of the following images is 30 mins.</p>
+							<img width="90%" style="max-width:600px" src="./images/wheelchair/predicting1.png" />
+							<p>
+								The image above shows the relationship between time of the day, how long ago entered the entrance and the probability of going to the office.
+							</p>
+							<img width="90%" style="max-width:600px" src="./images/wheelchair/prediction2.png" />
+							<p>
+								The image above shows the relationship between time of the day, how long ago entered the office and the probability of going to the restroom.
+								We can find a funny thing that most of time the user go to the restroom from the office.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Junqing Qiao. All rights reserved.
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
